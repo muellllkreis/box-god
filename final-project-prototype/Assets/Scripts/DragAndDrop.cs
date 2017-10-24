@@ -10,9 +10,13 @@ public class DragAndDrop : MonoBehaviour {
     Rigidbody rb;
     Camera main;
     bool active;
+    Ray ray;
+    RaycastHit hit;
+    Vector3 originalPos;
 
     private void Start()
     {
+        originalPos = transform.position;
         this.active = true;
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
@@ -33,7 +37,8 @@ public class DragAndDrop : MonoBehaviour {
     {
         if (active)
         {
-            Vector3 curPos = new Vector3(Input.mousePosition.x - posX, Input.mousePosition.y - posY, dist.z);
+            //Vector3 curPos = new Vector3(Input.mousePosition.x - posX, Input.mousePosition.y - posY, dist.z);
+            Vector3 curPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist.z);
             Vector3 worldPos = main.ScreenToWorldPoint(curPos);
             transform.position = worldPos;
         }
@@ -41,6 +46,15 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnMouseUp()
     {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if(hit.transform.tag == "GUIChecker")
+            {
+                transform.position = originalPos;
+                return;
+            }
+        }
         rb.useGravity = true;
         rb.mass = 1000;
         this.active = false;
