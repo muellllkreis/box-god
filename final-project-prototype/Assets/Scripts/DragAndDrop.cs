@@ -46,6 +46,7 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnMouseUp()
     {
+        //Check if object has been placed back into the GUI
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
@@ -55,9 +56,31 @@ public class DragAndDrop : MonoBehaviour {
                 return;
             }
         }
+
+        if(transform.tag == "Explosive")
+        {
+            StartCoroutine(ExplosiveCountdown());
+        }
+
+
+        //Make Object immovable and a collider for the level
         rb.useGravity = true;
         rb.mass = 1000;
         this.active = false;
         gameObject.layer = LayerMask.NameToLayer("3D GUI");
     }
+
+    public IEnumerator ExplosiveCountdown(float countdownValue = 3)
+    {
+        float currCountdownValue = countdownValue;
+        while(currCountdownValue > 0)
+        {
+            Debug.Log("Countdown: " + currCountdownValue);
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--;
+        }
+        transform.tag = "ExplosiveActive";
+        rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);
+        Destroy(gameObject, 0.1f);
+    } 
 }

@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         previous = transform.position;
 
 
-        Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
+        //Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
         transform.position += new Vector3(speed, 0.0f, 0.0f) * Time.deltaTime;
         ComputeVelocity();
     }
