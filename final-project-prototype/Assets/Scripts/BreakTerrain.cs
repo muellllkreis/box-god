@@ -5,11 +5,17 @@ using UnityEngine;
 public class BreakTerrain : MonoBehaviour {
     public Transform BrokenTerrain;
     public Transform effect;
+    public Texture texture;
     Rigidbody rb;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
+        foreach (Transform child in BrokenTerrain)
+        {
+            //child.gameObject.AddComponent<Renderer>();
+            child.GetComponent<Renderer>().sharedMaterial.mainTexture = texture;
+        }
 	}
 	
 	// Update is called once per frame
