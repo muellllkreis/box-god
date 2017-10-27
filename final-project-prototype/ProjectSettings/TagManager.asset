@@ -7,6 +7,9 @@ TagManager:
   - Plank
   - used
   - Spring
+  - GUIChecker
+  - Explosive
+  - ExplosiveActive
   layers:
   - Default
   - TransparentFX
