@@ -14,8 +14,13 @@ public class DragAndDrop : MonoBehaviour {
     RaycastHit hit;
     Vector3 originalPos;
 
+    GameObject player;
+    PlayerHealth playerHealth;
+
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
         originalPos = transform.position;
         this.active = true;
         rb = GetComponent<Rigidbody>();
@@ -81,6 +86,10 @@ public class DragAndDrop : MonoBehaviour {
         }
         transform.tag = "ExplosiveActive";
         rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);
+        if(Vector3.Distance(transform.position, player.transform.position) < 3)
+        {
+            playerHealth.TakeDamage(80);
+        }
         Destroy(gameObject, 0.1f);
     } 
 }

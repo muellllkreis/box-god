@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    //General Variables
     public float speed;
-    private Rigidbody rb;
-    RaycastHit hit;
-    Vector3 size;
-    public Vector3 jump;
     public float jumpForce = 0.1f;
     public float springJumpForce;
-    private float distToGround;
-    public Vector3 movement;
-    public LayerMask ignoreLayer;
+    Vector3 size;
+    private Rigidbody rb;
+    RaycastHit hit;
 
+    private Vector3 jump;
+    private float distToGround;
+    Vector3 movement;
+    public LayerMask ignoreLayer;
+    PlayerHealth playerHealth;
+
+    //Variables for Bouncing
+    bool bounce;
     private Vector3 velocity;
     private float minVelocity = 0.1f;
-    private bool goLeft;
     private Vector3 previous;
     private float timeStamp = 0.0f;
     private List<Vector3> blocked = new List<Vector3>();
     private float tempspeed;
     private float bounceForce = 2f;
-    bool bounce;
+    public int collisionDamage;
+
+    //Variables for Fall Damage
+    private float airTime;
+    public float maxFallVelocity;
 
     // Use this for initialization
     void Start () {
+        playerHealth = this.GetComponent<PlayerHealth>(); 
         rb = GetComponent<Rigidbody>();
         size = GetComponent<Collider>().bounds.size;
         jump = new Vector3(0.0f, 2.0f, 0.0f);
@@ -38,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // compute velocity
+        // compute velocity for bouncing back purposes
         Vector3 currFrameVelocity = (transform.position - previous) / Time.deltaTime;
         velocity = Vector3.Lerp(velocity, currFrameVelocity, 0.1f);
         if(previous == transform.position)
@@ -50,11 +59,20 @@ public class PlayerController : MonoBehaviour {
             blocked.Clear();
         }
         previous = transform.position;
+        //BounceBack if blocked
+        if ((velocity.x < minVelocity) && isGrounded() && isBlocked())
+        {
+            BounceBack();
+        }
+        if((velocity.y < maxFallVelocity) && isGrounded()) 
+        {
+            Debug.Log(playerHealth.currentHealth);
+            playerHealth.TakeDamage((int) velocity.y * (-5));
+            Debug.Log(playerHealth.currentHealth);
+        }
 
-
-        //Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
+        Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
         transform.position += new Vector3(speed, 0.0f, 0.0f) * Time.deltaTime;
-        ComputeVelocity();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -70,10 +88,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    protected void ComputeVelocity()
+    protected void BounceBack()
     {
-        if((velocity.x < minVelocity) && isGrounded() && isBlocked())
-        {
             if(!bounce)
             {
                 bounce = true;
@@ -81,9 +97,12 @@ public class PlayerController : MonoBehaviour {
                 speed = 0;
                 GetComponent<Rigidbody>().AddForce(new Vector3(-1, 0.0f, 0.0f) * bounceForce, ForceMode.Impulse);
                 speed = tempspeed;
+                if(playerHealth.currentHealth > 0)
+                {
+                    playerHealth.TakeDamage(collisionDamage);
+                }
             }
             bounce = false;
-        }
     }
 
     private void OnCollisionExit(Collision collision)
