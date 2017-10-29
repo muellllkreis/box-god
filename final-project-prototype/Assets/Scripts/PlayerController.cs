@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour {
     private float bounceForce = 2f;
     public int collisionDamage;
 
+    //for switching back and forth on different parts of the level
+    private bool goLeft = false;
+
     //Variables for Fall Damage
     private float airTime;
     public float maxFallVelocity;
@@ -60,7 +63,14 @@ public class PlayerController : MonoBehaviour {
         }
         previous = transform.position;
         //BounceBack if blocked
-        if ((velocity.x < minVelocity) && isGrounded() && isBlocked())
+        if (goLeft)
+        {
+            if ((-1 * velocity.x < minVelocity) && isGrounded() && isBlocked())
+            {
+                BounceBack();
+            }
+        }
+        else if ((velocity.x < minVelocity) && isGrounded() && isBlocked())
         {
             BounceBack();
         }
@@ -86,6 +96,24 @@ public class PlayerController : MonoBehaviour {
         {
             rb.AddForce(jump * springJumpForce, ForceMode.Impulse);
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Vector3 currFrameVelocity = (transform.position - previous) / Time.deltaTime;
+            velocity = Vector3.Lerp(velocity, currFrameVelocity, 0.1f);
+            if (!((velocity.x < minVelocity) && isGrounded() && isBlocked()))
+            {
+                BounceBack();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "PlayerSwitchBox")
+        {
+            goLeft = !goLeft;
+            speed = -1 * speed;
+        }
     }
 
     protected void BounceBack()
@@ -95,7 +123,7 @@ public class PlayerController : MonoBehaviour {
                 bounce = true;
                 tempspeed = speed;
                 speed = 0;
-                GetComponent<Rigidbody>().AddForce(new Vector3(-1, 0.0f, 0.0f) * bounceForce, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(new Vector3(-1*tempspeed, 0.0f, 0.0f) * bounceForce, ForceMode.Impulse);
                 speed = tempspeed;
                 if(playerHealth.currentHealth > 0)
                 {
