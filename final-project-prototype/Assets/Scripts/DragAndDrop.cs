@@ -72,6 +72,8 @@ public class DragAndDrop : MonoBehaviour {
         rb.useGravity = true;
         rb.mass = 1000;
         this.active = false;
+        BoxCollider boxcollider = GetComponent <BoxCollider> ();
+        boxcollider.size = new Vector3(1, 1, 1);
         gameObject.layer = LayerMask.NameToLayer("3D GUI");
     }
 

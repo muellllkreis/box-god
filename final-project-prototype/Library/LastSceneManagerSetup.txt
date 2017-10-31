@@ -1,4 +1,22 @@
 sceneSetups:
 - path: Assets/Scenes/prototype-scene.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/level 1.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/level 2.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/level 3.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/level 4.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Scenes/pro-level-springs.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/level unknown.unity
+  isLoaded: 0
+  isActive: 0
