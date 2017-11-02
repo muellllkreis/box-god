@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour {
 
     //General Variables
     public float speed;
+	public float boatSpeed;
     public float jumpForce = 0.1f;
     public float springJumpForce;
     Vector3 size;
     private Rigidbody rb;
     RaycastHit hit;
+	private bool moveBoat = false;
 
     private Vector3 jump;
     private float distToGround;
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour {
     private float tempspeed;
     private float bounceForce = 2f;
     public int collisionDamage;
+	private GameObject boat;
+	private Rigidbody boatRigidBody;
 
     //for switching back and forth on different parts of the level
     private bool goLeft = false;
@@ -46,6 +50,8 @@ public class PlayerController : MonoBehaviour {
         distToGround = GetComponent<Collider>().bounds.extents.y;
         bounce = false;
         previous = transform.position;
+		boat = GameObject.Find ("Boat");
+		boatRigidBody = boat.GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -82,8 +88,14 @@ public class PlayerController : MonoBehaviour {
             Debug.Log(playerHealth.currentHealth);
         }
 
-        Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
+        //Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
         transform.position += new Vector3(speed, 0.0f, 0.0f) * Time.deltaTime;
+
+		if (moveBoat == true) 
+		{
+			boatRigidBody.velocity = boat.transform.forward + new Vector3(boatSpeed, 0.0f, 0.0f);
+			//boat.transform.position += new Vector3(1.5f, 0.0f, 0.0f) * Time.deltaTime;
+		}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -106,6 +118,18 @@ public class PlayerController : MonoBehaviour {
                 BounceBack();
             }
         }
+		if (collision.gameObject.tag == "Boat") 
+		{
+			speed = 0;
+			moveBoat = true;
+		}
+
+		if (collision.gameObject.tag == "endBlock") 
+		{
+			speed = 1.5f;
+			moveBoat = false;
+		}
+
     }
 
     private void OnTriggerEnter(Collider collision)

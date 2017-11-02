@@ -24,7 +24,7 @@ public class DragAndDrop : MonoBehaviour {
         originalPos = transform.position;
         this.active = true;
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
+		rb.useGravity = false;
         main = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
@@ -67,14 +67,24 @@ public class DragAndDrop : MonoBehaviour {
             StartCoroutine(ExplosiveCountdown());
         }
 
+		if (transform.tag == "Boat") {
+			GameObject varGameObject = GameObject.Find ("Boat");
+			varGameObject.GetComponent<Bouyancy> ().enabled = true;
+			varGameObject.GetComponent<DragAndDrop> ().enabled = false;
+			this.active = true;
+			rb.useGravity = true;
+		} else {
+			//Make Object immovable and a collider for the level
+			rb.useGravity = true;
+			//rb.mass = 1000;
+			this.active = false;
+			BoxCollider boxcollider = GetComponent <BoxCollider> ();
+			boxcollider.size = new Vector3(1, 1, 1);
+			gameObject.layer = LayerMask.NameToLayer("3D GUI");
+		}
+        
 
-        //Make Object immovable and a collider for the level
-        rb.useGravity = true;
-        rb.mass = 1000;
-        this.active = false;
-        BoxCollider boxcollider = GetComponent <BoxCollider> ();
-        boxcollider.size = new Vector3(1, 1, 1);
-        gameObject.layer = LayerMask.NameToLayer("3D GUI");
+
     }
 
     public IEnumerator ExplosiveCountdown(float countdownValue = 3)

@@ -10,6 +10,11 @@ TagManager:
   - GUIChecker
   - Explosive
   - ExplosiveActive
+  - EnemySwitchBox
+  - Enemy
+  - PlayerSwitchBox
+  - Boat
+  - endBlock
   layers:
   - Default
   - TransparentFX
