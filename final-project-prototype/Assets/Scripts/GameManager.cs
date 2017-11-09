@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+		if (playerAI.isDead(true)) {
+			canvas.gameObject.SetActive (true);
+		}
+
 
 	}
 
