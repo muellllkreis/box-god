@@ -106,6 +106,10 @@ public class PlayerController : MonoBehaviour {
                 BounceBack();
             }
         }
+        if (collision.gameObject.tag == "Spikes")
+        {
+            playerHealth.TakeDamage(playerHealth.currentHealth);
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
