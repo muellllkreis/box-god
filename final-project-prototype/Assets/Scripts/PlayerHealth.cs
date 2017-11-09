@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour {
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
     Animator anim;
-    bool isDead;
+    public bool isDead;
     bool damaged;
     PlayerController playerController;
      
@@ -35,6 +35,10 @@ public class PlayerHealth : MonoBehaviour {
             damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         damaged = false; 
+
+		if (playerController.transform.position.y < -6.5f)
+			isDead = true;
+
 	}
 
     public void TakeDamage(int amount)
