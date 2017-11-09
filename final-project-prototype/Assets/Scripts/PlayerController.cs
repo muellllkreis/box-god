@@ -77,12 +77,6 @@ public class PlayerController : MonoBehaviour {
         {
             BounceBack();
         }
-        if((velocity.y < maxFallVelocity) && isGrounded()) 
-        {
-            Debug.Log(playerHealth.currentHealth);
-            playerHealth.TakeDamage((int) velocity.y * (-5));
-            Debug.Log(playerHealth.currentHealth);
-        }
 
        // Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
         transform.position += new Vector3(speed, 0.0f, 0.0f) * Time.deltaTime;
@@ -90,7 +84,16 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Plank")
+        if ((velocity.y < maxFallVelocity) && isGrounded())
+        {
+            if(!(collision.gameObject.tag == "Pad"))
+            {
+                Debug.Log(playerHealth.currentHealth);
+                playerHealth.TakeDamage((int)velocity.y * (-5));
+                Debug.Log(playerHealth.currentHealth);
+            }
+        }
+        if (collision.gameObject.tag == "Plank")
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             collision.gameObject.tag = "used";
