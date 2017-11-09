@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour {
     private float airTime;
     public float maxFallVelocity;
 
+    Coroutine groundDamage = null;
+
     // Use this for initialization
     void Start () {
         playerHealth = this.GetComponent<PlayerHealth>(); 
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour {
             Debug.Log(playerHealth.currentHealth);
         }
 
-        Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
+       // Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
         transform.position += new Vector3(speed, 0.0f, 0.0f) * Time.deltaTime;
     }
 
@@ -110,6 +112,28 @@ public class PlayerController : MonoBehaviour {
         {
             playerHealth.TakeDamage(playerHealth.currentHealth);
         }
+        if (collision.gameObject.tag == "DamageGround")
+        {
+            groundDamage = StartCoroutine(TakeDamageOnGround(5));
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "DamageGround")
+        {
+            Debug.Log("Exit Collision");
+            StopCoroutine(groundDamage);
+        }
+    }
+
+    public IEnumerator TakeDamageOnGround(float damage)
+    {
+        while(true)
+        {
+            playerHealth.TakeDamage(5);
+            yield return new WaitForSeconds(0.7f);
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -136,13 +160,6 @@ public class PlayerController : MonoBehaviour {
                 }
             }
             bounce = false;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Plank")
-        {
-        }
     }
 
     bool isGrounded()
