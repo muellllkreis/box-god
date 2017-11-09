@@ -13,6 +13,7 @@ TagManager:
   - PlayerSwitchBox
   - Spikes
   - Enemy
+  - DamageGround
   layers:
   - Default
   - TransparentFX
