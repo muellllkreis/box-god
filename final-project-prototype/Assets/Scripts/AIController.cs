@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIController : MonoBehaviour {
-    public float speed = 0;
+    public float speed = 1f;
     
     Vector3 size;
     private Rigidbody rb;

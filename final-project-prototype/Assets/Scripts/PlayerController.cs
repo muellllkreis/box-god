@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     //General Variables
-    public float moveSpeed;
+    public float moveSpeed = 1.5f;
     public static float collisionSpeed;
     public float jumpForce = 0.1f;
     public float springJumpForce;
