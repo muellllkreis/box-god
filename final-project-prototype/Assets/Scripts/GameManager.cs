@@ -7,11 +7,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public Transform canvas;
+	GameObject player;
+	PlayerHealth playerHealth;
 	public float menuDelay = 1.0f;
 	public static GameManager instance = null;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.FindGameObjectWithTag ("Player");
+		playerHealth = player.GetComponent<PlayerHealth> ();
 		canvas.gameObject.SetActive (false);
 		Time.timeScale = 1.0f;
 
@@ -31,6 +35,13 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+		if (playerHealth.isDead) {
+			canvas.gameObject.SetActive (true);
+			GameObject continueButton = GameObject.Find ("ContinueButton");
+			continueButton.GetComponent<Button> ().interactable = false;
+			GameObject menuText = GameObject.Find ("PausedText");
+			menuText.GetComponent<Text> ().text = "Game Over";
+		}
 
 	}
 
