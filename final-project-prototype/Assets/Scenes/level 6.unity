@@ -77,17 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1032,7 +1030,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1589486899257250, guid: 047932ebeac8f4d96933816f6f73edba, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1589486899257250, guid: 047932ebeac8f4d96933816f6f73edba, type: 2}
       propertyPath: m_Name
@@ -1989,7 +1987,7 @@ Prefab:
     - target: {fileID: 114069665590570202, guid: 3eba7e80f7248394f8dfa80d5b0630c9,
         type: 2}
       propertyPath: bounceMask.m_Bits
-      value: 4294965247
+      value: 4294964735
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eba7e80f7248394f8dfa80d5b0630c9, type: 2}

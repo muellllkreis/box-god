@@ -663,6 +663,11 @@ Prefab:
       propertyPath: m_Name
       value: AI (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114069665590570202, guid: 3eba7e80f7248394f8dfa80d5b0630c9,
+        type: 2}
+      propertyPath: bounceMask.m_Bits
+      value: 4294964735
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eba7e80f7248394f8dfa80d5b0630c9, type: 2}
   m_IsPrefabParent: 0
