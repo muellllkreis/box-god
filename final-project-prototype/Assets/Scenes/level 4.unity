@@ -1927,6 +1927,7 @@ MonoBehaviour:
   damageImage: {fileID: 402106892}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.284}
+  isDead: 0
 --- !u!54 &1548857615
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1955,13 +1956,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9c701403471994ab0e72fc8c38d1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  moveSpeed: 1.5
   jumpForce: 2
   springJumpForce: 5
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 4294966271
+  bounceTime: 2
   collisionDamage: 10
+  bounceMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   maxFallVelocity: -5.6
 --- !u!23 &1548857617
 MeshRenderer:

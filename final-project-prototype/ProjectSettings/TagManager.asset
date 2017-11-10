@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - DamageGround
   - Pad
+  - EnemySwitchBox
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - DragBox
   - 3D GUI
   - Not Dragged
-  - 
+  - Switch
   - 
   - 
   - 
