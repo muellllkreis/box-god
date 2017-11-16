@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
 
     Coroutine groundDamage = null;
 
+    //Variables for Stats
+    public int objectsUsed = 0;
+    int timePassed = 0;
+
     // Use this for initialization
     void Start () {
         playerHealth = this.GetComponent<PlayerHealth>(); 

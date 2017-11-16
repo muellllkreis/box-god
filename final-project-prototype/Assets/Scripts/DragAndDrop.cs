@@ -69,6 +69,7 @@ public class DragAndDrop : MonoBehaviour {
 
 
         //Make Object immovable and a collider for the level
+        player.GetComponent<PlayerController>().objectsUsed++;
         rb.useGravity = true;
         rb.mass = 1000;
         this.active = false;

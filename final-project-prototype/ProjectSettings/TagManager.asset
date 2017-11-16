@@ -16,6 +16,7 @@ TagManager:
   - DamageGround
   - Pad
   - EnemySwitchBox
+  - GameManager
   layers:
   - Default
   - TransparentFX
