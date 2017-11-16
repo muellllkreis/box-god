@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelPortal : MonoBehaviour {
 
-	public void OnTriggerEnter(Collider collider) {
-		if (collider.gameObject.tag == "Player") {
-			int levelNum = SceneManager.GetActiveScene ().buildIndex;
-			levelNum++;
-			SceneManager.LoadScene (levelNum);
+    private GameObject gm;
 
+    void Start()
+    {
+        this.gm = GameObject.FindGameObjectWithTag("GameManager");
+    }
+
+    public void OnTriggerEnter(Collider collider) {
+		if (collider.gameObject.tag == "Player") {
+            gm.GetComponent<GameManager>().ShowStats();
 		}
 	}
 
