@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <levels>
 	<level name="level 1">
-		<time>30</time>
+		<time>15</time>
 		<objects>1</objects>
 	</level>
 	<level name="level 2">
-		<time>30</time>
+		<time>15</time>
 		<objects>2</objects>
 	</level>
 	<level name="level 3">
-		<time>30</time>
+		<time>16</time>
 		<objects>2</objects>
 	</level>
 	<level name="level 4">
-		<time>30</time>
+		<time>15</time>
 		<objects>2</objects>
 	</level>
 	<level name="level 5">
-		<time>30</time>
+		<time>16</time>
 		<objects>3</objects>
 	</level>
 	<level name="level 6">
-		<time>30</time>
+		<time>12</time>
 		<objects>2</objects>
 	</level>
 	<level name="pro-level-springs">
-		<time>30</time>
+		<time>16</time>
 		<objects>6</objects>
 	</level>
 	<level name="prototype-scene">
