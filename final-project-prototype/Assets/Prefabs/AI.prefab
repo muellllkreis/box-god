@@ -213,7 +213,7 @@ MonoBehaviour:
   collisionDamage: 10
   bounceMask:
     serializedVersion: 2
-    m_Bits: 4294964223
+    m_Bits: 4294963711
   maxFallVelocity: -5.6
   objectsUsed: 0
 --- !u!114 &114307115554271656

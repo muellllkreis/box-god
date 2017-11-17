@@ -5,7 +5,8 @@ using UnityEngine;
 public class BreakTerrain : MonoBehaviour {
     public Transform BrokenTerrain;
     public Transform effect;
-    public Texture texture;
+    //public Texture texture;
+    public Material material;
     Rigidbody rb;
 
     // Use this for initialization
@@ -14,7 +15,7 @@ public class BreakTerrain : MonoBehaviour {
         foreach (Transform child in BrokenTerrain)
         {
             //child.gameObject.AddComponent<Renderer>();
-            child.GetComponent<Renderer>().sharedMaterial.mainTexture = texture;
+            child.GetComponent<Renderer>().material = material; //.sharedMaterial.mainTexture = texture;
         }
 	}
 	
