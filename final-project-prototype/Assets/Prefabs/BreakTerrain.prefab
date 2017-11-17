@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b7db29195e005c741ae350b7b5751dd2, type: 2}
+  - {fileID: 2100000, guid: f45ab9d2b5c07d44cb9962b949b95df0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,4 +124,4 @@ MonoBehaviour:
   BrokenTerrain: {fileID: 4804981130579146, guid: 8f273bfb5a64bee49905a3186b7bc1a5,
     type: 2}
   effect: {fileID: 0}
-  texture: {fileID: 2800000, guid: 8fe9ce387cc3cbf438d4d4615bb0ac30, type: 3}
+  material: {fileID: 2100000, guid: f45ab9d2b5c07d44cb9962b949b95df0, type: 2}

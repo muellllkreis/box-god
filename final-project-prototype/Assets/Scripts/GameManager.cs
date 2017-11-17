@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour {
     {
         int levelNum = SceneManager.GetActiveScene().buildIndex;
         levelNum++;
+        player.GetComponent<PlayerController>().previous = ;
         SceneManager.LoadScene(levelNum);
     }
 

@@ -707,7 +707,7 @@ Prefab:
     - target: {fileID: 114069665590570202, guid: 3eba7e80f7248394f8dfa80d5b0630c9,
         type: 2}
       propertyPath: bounceMask.m_Bits
-      value: 4294965247
+      value: 4294963711
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eba7e80f7248394f8dfa80d5b0630c9, type: 2}
@@ -1646,7 +1646,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4199787076161230, guid: 164c1496057e3d043911cc4f187f0e9c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.19
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 4199787076161230, guid: 164c1496057e3d043911cc4f187f0e9c, type: 2}
       propertyPath: m_LocalPosition.y

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     public float bounceTime = 2f;
     private bool bouncing = false;
     private Vector3 velocity;
-    private Vector3 previous;
+    public Vector3 previous;
     private float timeStamp = 0.0f;
     private List<Vector3> blocked = new List<Vector3>();
     public int collisionDamage;
@@ -56,10 +56,20 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        Vector3 currFrameVelocity;
         // compute velocity for bouncing back purposes
-        Vector3 currFrameVelocity = (transform.position - previous) / Time.deltaTime;
+        if (Time.deltaTime == 0.0f)
+        {
+            currFrameVelocity = (transform.position - previous);
+        }
+        else
+        {
+            currFrameVelocity = (transform.position - previous) / Time.deltaTime;
+        }
+
         velocity = Vector3.Lerp(velocity, currFrameVelocity, 0.1f);
+
+        Debug.Log(velocity.y);
         if(previous == transform.position)
         {
             blocked.Add(transform.position);
@@ -95,7 +105,7 @@ public class PlayerController : MonoBehaviour {
             if(!(collision.gameObject.tag == "Pad"))
             {
                 Debug.Log(playerHealth.currentHealth);
-                playerHealth.TakeDamage((int)velocity.y * (-5));
+                playerHealth.TakeDamage((int)velocity.y * (-8));
                 Debug.Log(playerHealth.currentHealth);
             }
         }

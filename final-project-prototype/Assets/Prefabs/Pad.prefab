@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23123986651863436}
   - component: {fileID: 54790083246932780}
   - component: {fileID: 114960408392847474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pad
   m_TagString: Pad
   m_Icon: {fileID: 0}
