@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\boatCollider.cs" />
+     <Compile Include="Assets\rotationController.cs" />
      <Compile Include="Assets\Scripts\AIController.cs" />
      <Compile Include="Assets\Scripts\BoatCollider.cs" />
      <Compile Include="Assets\Scripts\Bouyancy.cs" />

@@ -50,8 +50,11 @@ public class PlayerController : MonoBehaviour {
         distToGround = GetComponent<Collider>().bounds.extents.y;
         bounce = false;
         previous = transform.position;
-		boat = GameObject.Find ("Boat");
-		boatRigidBody = boat.GetComponent<Rigidbody>();
+		if (GameObject.Find("Boat") != null) {
+			boat = GameObject.Find ("Boat");
+			boatRigidBody = boat.GetComponent<Rigidbody>();
+		}
+
     }
 	
 	// Update is called once per frame

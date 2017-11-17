@@ -71,19 +71,24 @@ public class DragAndDrop : MonoBehaviour {
 			GameObject varGameObject = GameObject.Find ("Boat");
 			varGameObject.GetComponent<Bouyancy> ().enabled = true;
 			varGameObject.GetComponent<DragAndDrop> ().enabled = false;
-			this.active = true;
 			rb.useGravity = true;
-		} else {
+		} 
+		else if (transform.tag.StartsWith("Plank")) {
+			GameObject varGameObject = transform.gameObject;
+			Rigidbody rigid = varGameObject.GetComponent<Rigidbody> ();
+			rigid.useGravity = true;
+			varGameObject.GetComponent<Bouyancy> ().enabled = true;
+			varGameObject.GetComponent<DragAndDrop> ().enabled = false;
+			gameObject.layer = LayerMask.NameToLayer("3D GUI");
+		}
+		else {
 			//Make Object immovable and a collider for the level
-			rb.useGravity = true;
-			//rb.mass = 1000;
-			this.active = false;
 			BoxCollider boxcollider = GetComponent <BoxCollider> ();
 			boxcollider.size = new Vector3(1, 1, 1);
 			gameObject.layer = LayerMask.NameToLayer("3D GUI");
+			rb.useGravity = true;
 		}
-        
-
+		this.active = false;
 
     }
 

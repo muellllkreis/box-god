@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bouyancy : MonoBehaviour {
 
-	public float waterLevel = 3;
-	public float floatHeight = 1.5f;
-	public float bounceDamp = 3f;
+	public float waterLevel = 2.3f;
+	public float floatHeight = 0.1f;
+	public float bounceDamp = 0.5f;
 	public Vector3 buoyancyCenterOffset;
 
 	float forceFactor;
