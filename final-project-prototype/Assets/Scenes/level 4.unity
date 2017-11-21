@@ -859,7 +859,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 415292941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17, y: -5.67, z: 3.2638836}
+  m_LocalPosition: {x: 16.43, y: -5.67, z: 3.2638836}
   m_LocalScale: {x: 5.96, y: 16, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1475643462}
@@ -1625,6 +1625,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1327161046624380, guid: d3ac4601bcdd3784bb581e82af17338c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3ac4601bcdd3784bb581e82af17338c, type: 2}
   m_IsPrefabParent: 0
@@ -2010,6 +2014,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966271
   bounceTime: 2
+  previous: {x: 0, y: 0, z: 0}
   collisionDamage: 10
   bounceMask:
     serializedVersion: 2

@@ -87,8 +87,11 @@ public class DragAndDrop : MonoBehaviour {
         while(currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
-            yield return new WaitForSeconds(1.0f);
-            currCountdownValue--;
+            GetComponent<Renderer>().enabled = false;
+            yield return new WaitForSeconds(0.25f);
+            GetComponent<Renderer>().enabled = true;
+            yield return new WaitForSeconds(0.25f);
+            currCountdownValue = currCountdownValue - 0.5f;
         }
         transform.tag = "ExplosiveActive";
         rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);

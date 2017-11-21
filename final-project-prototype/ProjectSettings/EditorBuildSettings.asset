@@ -36,5 +36,8 @@ EditorBuildSettings:
     path: Assets/Scenes/level 7.unity
     guid: 17c9227bc8a420a42b512bf0667e9664
   - enabled: 1
+    path: Assets/Scenes/level seven.unity
+    guid: 51f51e5cbb4e51c4194761520566c6c9
+  - enabled: 1
     path: Assets/Scenes/pro-level-springs.unity
     guid: bc04a6c553f54c44e91046811e8c8a41
