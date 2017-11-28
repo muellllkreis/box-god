@@ -431,6 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4764c1fec8f0afd4e9ac181a2636fc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!23 &184827610
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1368,6 +1370,7 @@ MonoBehaviour:
     m_Bits: 4294963711
   maxFallVelocity: -5.6
   objectsUsed: 0
+  springJump: {fileID: 8300000, guid: 948bb425025ecaf4e80cabe21e93a3cc, type: 3}
 --- !u!23 &818370029
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1557,6 +1560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4764c1fec8f0afd4e9ac181a2636fc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!54 &1071467518
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1826,6 +1831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4764c1fec8f0afd4e9ac181a2636fc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!23 &1401603479
 MeshRenderer:
   m_ObjectHideFlags: 0

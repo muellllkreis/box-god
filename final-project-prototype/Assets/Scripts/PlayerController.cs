@@ -42,8 +42,14 @@ public class PlayerController : MonoBehaviour {
     public int objectsUsed = 0;
     int timePassed = 0;
 
+    // Sound
+    AudioSource source;
+    public AudioClip springJump;
+    public AudioClip jumpLanding;
+
     // Use this for initialization
     void Start () {
+        source = this.GetComponent<AudioSource>();
         playerHealth = this.GetComponent<PlayerHealth>(); 
         rb = GetComponent<Rigidbody>();
         size = GetComponent<Collider>().bounds.size;
@@ -69,7 +75,7 @@ public class PlayerController : MonoBehaviour {
 
         velocity = Vector3.Lerp(velocity, currFrameVelocity, 0.1f);
 
-        Debug.Log(velocity.y);
+        //Debug.Log(velocity.y);
         if(previous == transform.position)
         {
             blocked.Add(transform.position);
@@ -116,6 +122,8 @@ public class PlayerController : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Spring")
         {
+            source.clip = springJump;
+            source.Play();
             rb.AddForce(jump * springJumpForce, ForceMode.Impulse);
         }
         if (collision.gameObject.tag == "Spikes")
@@ -125,6 +133,11 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.tag == "DamageGround")
         {
             groundDamage = StartCoroutine(TakeDamageOnGround(5));
+        }
+        if(collision.gameObject.tag == "Untagged")
+        {
+            source.clip = jumpLanding;
+            source.Play();
         }
     }
 
