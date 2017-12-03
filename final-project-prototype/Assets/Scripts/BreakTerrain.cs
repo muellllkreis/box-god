@@ -16,6 +16,7 @@ public class BreakTerrain : MonoBehaviour {
         {
             //child.gameObject.AddComponent<Renderer>();
             child.GetComponent<Renderer>().material = material; //.sharedMaterial.mainTexture = texture;
+            child.gameObject.layer = LayerMask.NameToLayer("NoCollide");
         }
 	}
 	
@@ -28,6 +29,7 @@ public class BreakTerrain : MonoBehaviour {
     {
         if(collision.transform.tag == "ExplosiveActive")
         {
+            gameObject.layer = LayerMask.NameToLayer("NoCollide");
             rb.isKinematic = false;
             BreakDeath();
         }
