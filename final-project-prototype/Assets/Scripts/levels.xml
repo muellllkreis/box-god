@@ -21,10 +21,14 @@
 		<objects>3</objects>
 	</level>
 	<level name="level 6">
-		<time>12</time>
-		<objects>2</objects>
+		<time>15</time>
+		<objects>4</objects>
 	</level>
 	<level name="level 7">
+		<time>15</time>
+		<objects>1</objects>
+	</level>
+	<level name="level LATER">
 		<time>16</time>
 		<objects>2</objects>
 	</level>

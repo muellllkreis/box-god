@@ -435,12 +435,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380251569}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 035a4830401547647a330d2b5770c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1522882132}
 --- !u!81 &380251571
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1468,11 +1467,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1452193816}
---- !u!1 &1522882132 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1371585645853492, guid: 3eba7e80f7248394f8dfa80d5b0630c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 672126720}
 --- !u!4 &1530973739 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4523357439808430, guid: 8f609977abad14e84954dd205b3864e5,
