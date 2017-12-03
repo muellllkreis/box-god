@@ -210,10 +210,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966271
   bounceTime: 2
+  previous: {x: 0, y: 0, z: 0}
   collisionDamage: 10
   bounceMask:
     serializedVersion: 2
-    m_Bits: 4294963711
+    m_Bits: 4294959615
   maxFallVelocity: -5.6
   objectsUsed: 0
 --- !u!114 &114307115554271656
