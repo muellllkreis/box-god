@@ -28,6 +28,14 @@
 		<time>15</time>
 		<objects>1</objects>
 	</level>
+	<level name="level 8">
+		<time>15</time>
+		<objects>2</objects>
+	</level>
+	<level name="level 9">
+		<time>15</time>
+		<objects>4</objects>
+	</level>
 	<level name="level LATER">
 		<time>16</time>
 		<objects>2</objects>
