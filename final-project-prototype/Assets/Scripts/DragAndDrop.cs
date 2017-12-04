@@ -16,7 +16,12 @@ public class DragAndDrop : MonoBehaviour {
 
     GameObject player;
     PlayerHealth playerHealth;
-   // public ParticleSystem exp;
+    public AudioClip click;
+    public AudioClip explosion;
+    public AudioClip drop;
+    AudioSource source;
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
 
     private void Start()
     {
@@ -27,12 +32,15 @@ public class DragAndDrop : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         main = GameObject.Find("MainCamera").GetComponent<Camera>();
+        source = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
     {
         if(active)
         {
+            source.clip = click;
+            source.Play();
             dist = main.WorldToScreenPoint(transform.position);
             posX = Input.mousePosition.x - dist.x;
             posY = Input.mousePosition.y + dist.y;
@@ -58,6 +66,8 @@ public class DragAndDrop : MonoBehaviour {
         {
             if(hit.transform.tag == "GUIChecker")
             {
+                source.clip = click;
+                source.Play();
                 transform.position = originalPos;
                 return;
             }
@@ -90,7 +100,18 @@ public class DragAndDrop : MonoBehaviour {
         
     }
 
-    public IEnumerator ExplosiveCountdown(float countdownValue = 3)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag != "Player")
+        {
+            source.pitch = Random.Range(lowPitchRange, highPitchRange);
+            source.clip = drop;
+            source.Play();
+        }
+
+    }
+
+        public IEnumerator ExplosiveCountdown(float countdownValue = 3)
     {
         float currCountdownValue = countdownValue;
         while(currCountdownValue > 0)
@@ -103,11 +124,11 @@ public class DragAndDrop : MonoBehaviour {
             currCountdownValue = currCountdownValue - 0.5f;
         }
         transform.tag = "ExplosiveActive";
-        // ParticleSystem.EmissionModule exp_module = this.exp.emission;
-        //exp_module.enabled = true;
         this.GetComponent<MeshRenderer>().enabled = false;
         ParticleSystem exp = this.GetComponent<ParticleSystem>();
         exp.Play();
+        source.clip = explosion;
+        source.Play();
         rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);
         if(Vector3.Distance(transform.position, player.transform.position) < 3)
         {

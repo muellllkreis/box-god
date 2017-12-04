@@ -42,8 +42,20 @@ public class PlayerController : MonoBehaviour {
     public int objectsUsed = 0;
     int timePassed = 0;
 
+    // Sound
+    AudioSource source;
+    public AudioClip springJump;
+    public AudioClip plankJump;
+    public AudioClip jumpLanding;
+
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
+    private float velToVol = .2F;
+    private float velocityClipSplit = 10F;
+
     // Use this for initialization
     void Start () {
+        source = this.GetComponent<AudioSource>();
         playerHealth = this.GetComponent<PlayerHealth>(); 
         rb = GetComponent<Rigidbody>();
         size = GetComponent<Collider>().bounds.size;
@@ -69,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 
         velocity = Vector3.Lerp(velocity, currFrameVelocity, 0.1f);
 
-        Debug.Log(velocity.y);
+        //Debug.Log(velocity.y);
         if(previous == transform.position)
         {
             blocked.Add(transform.position);
@@ -100,12 +112,14 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        source.pitch = Random.Range(lowPitchRange, highPitchRange);
         if ((velocity.y < maxFallVelocity) && isGrounded())
         {
             if(!(collision.gameObject.tag == "Pad") && !(collision.gameObject.tag == "Finish"))
             {
                 Debug.Log(playerHealth.currentHealth);
                 playerHealth.TakeDamage((int)velocity.y * (-8));
+                source.volume = (int)velocity.y * velToVol;
                 Debug.Log(playerHealth.currentHealth);
             }
         }
@@ -113,9 +127,13 @@ public class PlayerController : MonoBehaviour {
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             collision.gameObject.tag = "used";
+            source.clip = plankJump;
+            source.Play();
         }
         if (collision.gameObject.tag == "Spring")
         {
+            source.clip = springJump;
+            source.Play();
             rb.AddForce(jump * springJumpForce, ForceMode.Impulse);
         }
         if (collision.gameObject.tag == "Spikes")
@@ -126,6 +144,12 @@ public class PlayerController : MonoBehaviour {
         {
             groundDamage = StartCoroutine(TakeDamageOnGround(5));
         }
+        if(collision.gameObject.tag == "Untagged")
+        {
+            source.clip = jumpLanding;
+            source.Play();
+        }
+        source.volume = 1;
     }
 
     private void OnCollisionExit(Collision collision)

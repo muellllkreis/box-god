@@ -16,9 +16,16 @@ public class PlayerHealth : MonoBehaviour {
     public bool isDead;
     bool damaged;
     PlayerController playerController;
-     
-	// Use this for initialization
-	void Awake () {
+
+    AudioSource source;
+    public AudioClip hurt;
+    public AudioClip gameOver;
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
+
+    // Use this for initialization
+    void Awake () {
+        source = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         currentHealth = startingHealth;
@@ -43,6 +50,9 @@ public class PlayerHealth : MonoBehaviour {
 
     public void TakeDamage(int amount)
     {
+        source.pitch = Random.Range(lowPitchRange, highPitchRange);
+        source.clip = hurt;
+        source.Play();
         damaged = true;
         currentHealth -= amount;
         healthSlider.value = currentHealth;
@@ -54,6 +64,8 @@ public class PlayerHealth : MonoBehaviour {
 
     void Death()
     {
+        source.clip = gameOver;
+        source.Play();
         isDead = true;
         gameObject.GetComponent<Renderer>().material.color = Color.gray;
         playerController.enabled = false;
