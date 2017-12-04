@@ -19,6 +19,9 @@ public class AutoExplosive : MonoBehaviour
     PlayerHealth playerHealth;
     // public ParticleSystem exp;
 
+    public AudioClip explosion;
+    AudioSource source;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -32,6 +35,7 @@ public class AutoExplosive : MonoBehaviour
         rb.mass = 1000;
         this.active = false;
         gameObject.layer = LayerMask.NameToLayer("3D GUI");
+        source = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
@@ -105,6 +109,8 @@ public class AutoExplosive : MonoBehaviour
         this.GetComponent<MeshRenderer>().enabled = false;
         ParticleSystem exp = this.GetComponent<ParticleSystem>();
         exp.Play();
+        source.clip = explosion;
+        source.Play();
         rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);
         if (Vector3.Distance(transform.position, player.transform.position) < 3)
         {
