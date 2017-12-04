@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip springJump;
     public AudioClip plankJump;
     public AudioClip jumpLanding;
+    public AudioClip hurt;
 
     private float lowPitchRange = .75F;
     private float highPitchRange = 1.5F;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour {
             timeStamp = Time.time;
             goLeft = !goLeft;
             moveSpeed = -1 * moveSpeed;
+            DamageSound();
             playerHealth.TakeDamage(collisionDamage);
         }
         //Debug.Log("Velocity: " + velocity + " " + isBlocked() + " " + isGrounded());
@@ -119,6 +121,7 @@ public class PlayerController : MonoBehaviour {
             {
                 Debug.Log(playerHealth.currentHealth);
                 playerHealth.TakeDamage((int)velocity.y * (-8));
+                DamageSound();
                 source.volume = (int)velocity.y * velToVol;
                 Debug.Log(playerHealth.currentHealth);
             }
@@ -138,10 +141,12 @@ public class PlayerController : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Spikes")
         {
+            DamageSound();
             playerHealth.TakeDamage(playerHealth.currentHealth);
         }
         if (collision.gameObject.tag == "DamageGround")
         {
+            DamageSound();
             groundDamage = StartCoroutine(TakeDamageOnGround(5));
         }
         if(collision.gameObject.tag == "Untagged")
@@ -150,6 +155,13 @@ public class PlayerController : MonoBehaviour {
             source.Play();
         }
         source.volume = 1;
+    }
+
+    private void DamageSound()
+    {
+        source.pitch = Random.Range(lowPitchRange, highPitchRange);
+        source.clip = hurt;
+        source.Play();
     }
 
     private void OnCollisionExit(Collision collision)
