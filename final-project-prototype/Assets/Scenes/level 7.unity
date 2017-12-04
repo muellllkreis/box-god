@@ -329,7 +329,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.3, y: 2.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &174128485
 Rigidbody:
@@ -1112,7 +1112,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 2.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &515182324
 MeshFilter:
@@ -2192,6 +2192,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.284}
   isDead: 0
+  hurt: {fileID: 0}
 --- !u!54 &1548857615
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2237,6 +2238,7 @@ MonoBehaviour:
   springJump: {fileID: 8300000, guid: 948bb425025ecaf4e80cabe21e93a3cc, type: 3}
   plankJump: {fileID: 8300000, guid: 97c294c40afd438429446d9eb16a2b20, type: 3}
   jumpLanding: {fileID: 8300000, guid: dd9b51d2c43226c458e44cdfcc6bbd1e, type: 3}
+  hurt: {fileID: 0}
 --- !u!23 &1548857617
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2462,7 +2464,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.3, y: 2.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2027512978
 Rigidbody:
