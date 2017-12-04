@@ -75,6 +75,9 @@ EditorBuildSettings:
     path: Assets/Scenes/pro-level-springs.unity
     guid: bc04a6c553f54c44e91046811e8c8a41
   - enabled: 1
+    path: Assets/Scenes/Congratulations.unity
+    guid: bcbc07e78d7fa4ce194eea512877ec09
+  - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: 7167143a753914f4d8a0839fc4877247
   - enabled: 0
