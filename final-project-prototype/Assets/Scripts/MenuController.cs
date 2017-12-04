@@ -18,4 +18,8 @@ public class MenuController : MonoBehaviour {
 		SceneManager.LoadScene ("Level Select");
 	}
 
+	public void MainMenu() {
+		SceneManager.LoadScene ("Main Menu");
+	}
+
 }
