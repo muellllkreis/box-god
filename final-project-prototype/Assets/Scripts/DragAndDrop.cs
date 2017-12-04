@@ -18,7 +18,10 @@ public class DragAndDrop : MonoBehaviour {
     PlayerHealth playerHealth;
     public AudioClip click;
     public AudioClip explosion;
+    public AudioClip drop;
     AudioSource source;
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
 
     private void Start()
     {
@@ -89,7 +92,18 @@ public class DragAndDrop : MonoBehaviour {
         gameObject.layer = LayerMask.NameToLayer("3D GUI");
     }
 
-    public IEnumerator ExplosiveCountdown(float countdownValue = 3)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag != "Player")
+        {
+            source.pitch = Random.Range(lowPitchRange, highPitchRange);
+            source.clip = drop;
+            source.Play();
+        }
+
+    }
+
+        public IEnumerator ExplosiveCountdown(float countdownValue = 3)
     {
         float currCountdownValue = countdownValue;
         while(currCountdownValue > 0)

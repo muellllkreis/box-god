@@ -45,7 +45,13 @@ public class PlayerController : MonoBehaviour {
     // Sound
     AudioSource source;
     public AudioClip springJump;
+    public AudioClip plankJump;
     public AudioClip jumpLanding;
+
+    private float lowPitchRange = .75F;
+    private float highPitchRange = 1.5F;
+    private float velToVol = .2F;
+    private float velocityClipSplit = 10F;
 
     // Use this for initialization
     void Start () {
@@ -106,12 +112,14 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        source.pitch = Random.Range(lowPitchRange, highPitchRange);
         if ((velocity.y < maxFallVelocity) && isGrounded())
         {
             if(!(collision.gameObject.tag == "Pad"))
             {
                 Debug.Log(playerHealth.currentHealth);
                 playerHealth.TakeDamage((int)velocity.y * (-8));
+                source.volume = (int)velocity.y * velToVol;
                 Debug.Log(playerHealth.currentHealth);
             }
         }
@@ -119,6 +127,8 @@ public class PlayerController : MonoBehaviour {
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             collision.gameObject.tag = "used";
+            source.clip = plankJump;
+            source.Play();
         }
         if (collision.gameObject.tag == "Spring")
         {
@@ -139,6 +149,7 @@ public class PlayerController : MonoBehaviour {
             source.clip = jumpLanding;
             source.Play();
         }
+        source.volume = 1;
     }
 
     private void OnCollisionExit(Collision collision)

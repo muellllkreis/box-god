@@ -218,6 +218,8 @@ MonoBehaviour:
   maxFallVelocity: -5.6
   objectsUsed: 0
   springJump: {fileID: 8300000, guid: 948bb425025ecaf4e80cabe21e93a3cc, type: 3}
+  plankJump: {fileID: 8300000, guid: 97c294c40afd438429446d9eb16a2b20, type: 3}
+  jumpLanding: {fileID: 8300000, guid: dd9b51d2c43226c458e44cdfcc6bbd1e, type: 3}
 --- !u!114 &114307115554271656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,3 +238,5 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.284}
   isDead: 0
+  hurt: {fileID: 8300000, guid: 75282258a4835be4088fd213ee65c282, type: 3}
+  gameOver: {fileID: 8300000, guid: a8eee2794afec994d9cb51baed926b25, type: 3}

@@ -294,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &428309990
 GameObject:
@@ -995,3 +995,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374601146}
+--- !u!1001 &2114171388
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.20523071
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.494934
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.0010843277
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428450594136920, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 534f92ec501195a4c97ff18144e538ac, type: 2}
+  m_IsPrefabParent: 0
