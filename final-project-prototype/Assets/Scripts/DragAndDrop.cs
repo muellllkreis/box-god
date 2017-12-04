@@ -79,7 +79,15 @@ public class DragAndDrop : MonoBehaviour {
             BoxCollider boxcollider = GetComponent<BoxCollider>();
             boxcollider.size = new Vector3(1, 1, 1);
         }
-        gameObject.layer = LayerMask.NameToLayer("3D GUI");
+        if(!gameObject.tag.Equals("Pad"))
+        {
+            gameObject.layer = LayerMask.NameToLayer("3D GUI");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+        
     }
 
     public IEnumerator ExplosiveCountdown(float countdownValue = 3)
