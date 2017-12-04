@@ -25,8 +25,14 @@ public class GameManager : MonoBehaviour {
     private int seconds = 0;
     private int minutes = 0;
 
+    AudioSource source;
+    public AudioClip gameOver;
+    bool playSound;
+
     // Use this for initialization
     void Start () {
+        playSound = false;
+        source = GetComponent<AudioSource>();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		canvas.gameObject.SetActive (false);
@@ -51,6 +57,13 @@ public class GameManager : MonoBehaviour {
 
 		if (playerHealth.isDead) {
 			canvas.gameObject.SetActive (true);
+            if(!playSound)
+            {
+                playSound = true;
+                source.clip = gameOver;
+                source.volume = 1;
+                source.Play();
+            }
 			GameObject continueButton = GameObject.Find ("ContinueButton");
 			continueButton.GetComponent<Button> ().interactable = false;
 			GameObject menuText = GameObject.Find ("PausedText");
