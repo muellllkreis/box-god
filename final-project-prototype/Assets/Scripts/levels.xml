@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <levels>
 	<level name="level 1">
-		<time>15</time>
+		<time>14</time>
 		<objects>1</objects>
 	</level>
 	<level name="level 2">
-		<time>15</time>
+		<time>13</time>
 		<objects>2</objects>
 	</level>
 	<level name="level 3">
-		<time>16</time>
+		<time>13</time>
 		<objects>2</objects>
 	</level>
 	<level name="level 4">
@@ -17,43 +17,71 @@
 		<objects>2</objects>
 	</level>
 	<level name="level 5">
-		<time>16</time>
+		<time>10</time>
 		<objects>3</objects>
 	</level>
 	<level name="level 6">
-		<time>15</time>
-		<objects>4</objects>
+		<time>14</time>
+		<objects>2</objects>
 	</level>
 	<level name="level 7">
-		<time>16</time>
-		<objects>4</objects>
-	</level>
-	<level name="level 8">
-		<time>18</time>
-		<objects>1</objects>
+		<time>15</time>
+		<objects>2</objects>
 	</level>
 	<level name="level 8">
 		<time>15</time>
-		<objects>2</objects>
+		<objects>3</objects>
 	</level>
 	<level name="level 9">
-		<time>15</time>
+		<time>17</time>
 		<objects>4</objects>
 	</level>
-	<level name="level LATER">
+	<level name="level 10">
+		<time>13</time>
+		<objects>1</objects>
+	</level>
+	<level name="level 11">
+		<time>17</time>
+		<objects>2</objects>
+	</level>
+	<level name="level 12">
+		<time>16</time>
+		<objects>4</objects>
+	</level>
+	<level name="level 13">
+		<time>13</time>
+		<objects>1</objects>
+	</level>
+	<level name="level 14">
+		<time>11</time>
+		<objects>4</objects>
+	</level>
+	<level name="level 15">
+		<time>12</time>
+		<objects>1</objects>
+	</level>
+	<level name="level 16">
+		<time>12</time>
+		<objects>3</objects>
+	</level>
+	<level name="level 17">
+		<time>12</time>
+		<objects>1</objects>
+	</level>
+	<level name="level 18">
 		<time>16</time>
 		<objects>2</objects>
 	</level>
-	<level name="level seven">
-		<time>16</time>
+	<level name="level 19">
+		<time>13</time>
+		<objects>2</objects>
+	</level>
+	<level name="level 20">
+		<time>22</time>
 		<objects>3</objects>
 	</level>
 	<level name="pro-level-springs">
-		<time>16</time>
-		<objects>6</objects>
-	</level>
-	<level name="prototype-scene">
-		<time>15</time>
-		<objects>1</objects>
+		<time>19</time>
+		<objects>3</objects>
 	</level>
 </levels>
