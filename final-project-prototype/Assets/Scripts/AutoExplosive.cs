@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragAndDrop : MonoBehaviour {
+public class AutoExplosive : MonoBehaviour
+{
 
     Vector3 dist;
     float posX;
@@ -16,12 +17,7 @@ public class DragAndDrop : MonoBehaviour {
 
     GameObject player;
     PlayerHealth playerHealth;
-    public AudioClip click;
-    public AudioClip explosion;
-    public AudioClip drop;
-    AudioSource source;
-    private float lowPitchRange = .75F;
-    private float highPitchRange = 1.5F;
+    // public ParticleSystem exp;
 
     private void Start()
     {
@@ -30,17 +26,18 @@ public class DragAndDrop : MonoBehaviour {
         originalPos = transform.position;
         this.active = true;
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
         main = GameObject.Find("MainCamera").GetComponent<Camera>();
-        source = GetComponent<AudioSource>();
+        StartCoroutine(ExplosiveCountdown());
+        rb.useGravity = true;
+        rb.mass = 1000;
+        this.active = false;
+        gameObject.layer = LayerMask.NameToLayer("3D GUI");
     }
 
     void OnMouseDown()
     {
-        if(active)
+        if (active)
         {
-            source.clip = click;
-            source.Play();
             dist = main.WorldToScreenPoint(transform.position);
             posX = Input.mousePosition.x - dist.x;
             posY = Input.mousePosition.y + dist.y;
@@ -64,16 +61,14 @@ public class DragAndDrop : MonoBehaviour {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            if(hit.transform.tag == "GUIChecker")
+            if (hit.transform.tag == "GUIChecker")
             {
-                source.clip = click;
-                source.Play();
                 transform.position = originalPos;
                 return;
             }
         }
 
-        if(transform.tag == "Explosive")
+        if (transform.tag == "Explosive")
         {
             StartCoroutine(ExplosiveCountdown());
         }
@@ -84,37 +79,18 @@ public class DragAndDrop : MonoBehaviour {
         rb.useGravity = true;
         rb.mass = 1000;
         this.active = false;
-        if(!(transform.tag == "Explosive"))
+        if (!(transform.tag == "Explosive"))
         {
             BoxCollider boxcollider = GetComponent<BoxCollider>();
             boxcollider.size = new Vector3(1, 1, 1);
         }
-        if(!gameObject.tag.Equals("Pad"))
-        {
-            gameObject.layer = LayerMask.NameToLayer("3D GUI");
-        }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("Default");
-        }
-        
+        gameObject.layer = LayerMask.NameToLayer("3D GUI");
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag != "Player")
-        {
-            source.pitch = Random.Range(lowPitchRange, highPitchRange);
-            source.clip = drop;
-            source.Play();
-        }
-
-    }
-
-        public IEnumerator ExplosiveCountdown(float countdownValue = 3)
+    public IEnumerator ExplosiveCountdown(float countdownValue = 3)
     {
         float currCountdownValue = countdownValue;
-        while(currCountdownValue > 0)
+        while (currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
             GetComponent<Renderer>().enabled = false;
@@ -124,16 +100,16 @@ public class DragAndDrop : MonoBehaviour {
             currCountdownValue = currCountdownValue - 0.5f;
         }
         transform.tag = "ExplosiveActive";
+        // ParticleSystem.EmissionModule exp_module = this.exp.emission;
+        //exp_module.enabled = true;
         this.GetComponent<MeshRenderer>().enabled = false;
         ParticleSystem exp = this.GetComponent<ParticleSystem>();
         exp.Play();
-        source.clip = explosion;
-        source.Play();
         rb.AddForce(new Vector3(0.0f, 0.01f, 0.0f) * 0.1f, ForceMode.Impulse);
-        if(Vector3.Distance(transform.position, player.transform.position) < 3)
+        if (Vector3.Distance(transform.position, player.transform.position) < 3)
         {
             playerHealth.TakeDamage(80);
         }
         Destroy(gameObject, exp.main.duration);
-    } 
+    }
 }

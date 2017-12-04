@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -134,12 +136,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 4708948}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 035a4830401547647a330d2b5770c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1875345620}
 --- !u!81 &4708950
 AudioListener:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.1921569, g: 0.47450984, b: 0.2174713, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -981,21 +982,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114045077734838802, guid: 2abf4e360a76bcf439e6b5bb11226ade,
-        type: 2}
-      propertyPath: click
-      value: 
-      objectReference: {fileID: 8300000, guid: 12552c8537d4bc14ba4cc6b345311492, type: 3}
-    - target: {fileID: 114045077734838802, guid: 2abf4e360a76bcf439e6b5bb11226ade,
-        type: 2}
-      propertyPath: explosion
-      value: 
-      objectReference: {fileID: 8300000, guid: 8160a4df883d35f43b906d2975b2b0ad, type: 3}
-    - target: {fileID: 82875382955443662, guid: 2abf4e360a76bcf439e6b5bb11226ade,
-        type: 2}
-      propertyPath: spreadCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2abf4e360a76bcf439e6b5bb11226ade, type: 2}
   m_IsPrefabParent: 0
@@ -1225,11 +1211,6 @@ Prefab:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114960408392847474, guid: ea6c5103b29b131428678757f03c1bf7,
-        type: 2}
-      propertyPath: click
-      value: 
-      objectReference: {fileID: 8300000, guid: 12552c8537d4bc14ba4cc6b345311492, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea6c5103b29b131428678757f03c1bf7, type: 2}
   m_IsPrefabParent: 0
@@ -2012,11 +1993,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eba7e80f7248394f8dfa80d5b0630c9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1875345620 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1371585645853492, guid: 3eba7e80f7248394f8dfa80d5b0630c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1875345619}
 --- !u!1 &1896395675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,91 +2075,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1896395675}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1936857621 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1791061623243778, guid: 2031bd8568e1aad478eea3c46658c577,
-    type: 2}
-  m_PrefabInternal: {fileID: 2046469817}
---- !u!82 &1936857627
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1936857621}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &2036745816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,11 +2196,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114242547740978408, guid: 2031bd8568e1aad478eea3c46658c577,
-        type: 2}
-      propertyPath: click
-      value: 
-      objectReference: {fileID: 8300000, guid: 12552c8537d4bc14ba4cc6b345311492, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2031bd8568e1aad478eea3c46658c577, type: 2}
   m_IsPrefabParent: 0

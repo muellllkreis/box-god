@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour {
         source.pitch = Random.Range(lowPitchRange, highPitchRange);
         if ((velocity.y < maxFallVelocity) && isGrounded())
         {
-            if(!(collision.gameObject.tag == "Pad"))
+            if(!(collision.gameObject.tag == "Pad") && !(collision.gameObject.tag == "Finish"))
             {
                 Debug.Log(playerHealth.currentHealth);
                 playerHealth.TakeDamage((int)velocity.y * (-8));

@@ -973,7 +973,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Quit to Menu
 --- !u!114 &114213957238561350
 MonoBehaviour:
   m_ObjectHideFlags: 1

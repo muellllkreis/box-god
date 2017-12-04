@@ -1172,12 +1172,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 773531361}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 035a4830401547647a330d2b5770c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1540197420}
 --- !u!81 &773531364
 AudioListener:
   m_ObjectHideFlags: 0
