@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void QuitGame() {
-		Application.Quit ();
+		SceneManager.LoadScene (0);
 	}
 
     private void GenerateHeader(int score)
