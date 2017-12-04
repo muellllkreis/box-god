@@ -20,8 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level 3.unity
     guid: 35c4e786ed9014ecea669d50fd60b9c8
-  - enabled: 1
-    path: Assets/Scenes/level 4.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/b152833069a281c4bad56962a6e2e7bf
     guid: b152833069a281c4bad56962a6e2e7bf
   - enabled: 1
     path: Assets/Scenes/level 5.unity
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/level 6.unity
     guid: 2acba01328fdd40f0b0de10ae50a158e
   - enabled: 1
-    path: Assets/Scenes/level 7.unity
+    path: Assets/Scenes/level 4.unity
     guid: a0053b74c5740b847b6e3f34d3dfb293
   - enabled: 1
     path: Assets/Scenes/level 8.unity
