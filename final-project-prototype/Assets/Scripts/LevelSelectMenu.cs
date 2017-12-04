@@ -89,40 +89,8 @@ public class LevelSelectMenu : MonoBehaviour {
 		SceneManager.LoadScene (21);
 	}
 
-	public void Level22() {
-		SceneManager.LoadScene (22);
-	}
-
-	public void Level23() {
-		SceneManager.LoadScene (23);
-	}
-
-	public void Level24() {
-		SceneManager.LoadScene (24);
-	}
-
-	public void Level25() {
-		SceneManager.LoadScene (25);
-	}
-
-	public void Level26() {
-		SceneManager.LoadScene (26);
-	}
-
-	public void Level27() {
-		SceneManager.LoadScene (27);
-	}
-
-	public void Level28() {
-		SceneManager.LoadScene (28);
-	}
-
-	public void Level29() {
-		SceneManager.LoadScene (29);
-	}
-
-	public void Level30() {
-		SceneManager.LoadScene (30);
+	public void Back() {
+		SceneManager.LoadScene ("Main Menu");
 	}
 
 }
